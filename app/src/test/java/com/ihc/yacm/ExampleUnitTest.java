@@ -1,4 +1,4 @@
-package com.yacm.yacm;
+package com.ihc.yacm;
 
 import org.junit.Test;
 
