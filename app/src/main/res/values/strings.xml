@@ -14,4 +14,16 @@
     <string name="ic_menu_account">Account</string>
     <string name="ic_menu_logout">Logout</string>
     <string name="title_create">Create Event</string>
+    <string name="home_welcome">Welcome Back! \n Select a day in the calendar or on the list to get started</string>
+    <string name="title_activity_home">Home</string>
+    <string-array name="events_list">
+        <item>Ham</item>
+        <item>Beef</item>
+        <item>Onion</item>
+        <item>Pepperoni</item>
+        <item>Cheese</item>
+        <item>Bacon</item>
+        <item>Egg</item>
+        <item>Mushroom</item>
+    </string-array>
 </resources>
