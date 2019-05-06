@@ -1,5 +1,6 @@
 package com.ihc.yacm;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        
 
     }
 
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public static String TEST_MESSAGE = "mykey";
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -121,9 +123,15 @@ public class MainActivity extends AppCompatActivity
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     // mTextMessage.setText(R.string.title_home);
+                    System.out.println("IN HOME 1");
                     if (BuildConfig.DEBUG) {
+                        System.out.println("IN HOME 2");
                         // do something for a debug build
                         Toast.makeText(MainActivity.this,"test", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, home.class);
+                        String message = "This is the new home";
+                        intent.putExtra(TEST_MESSAGE, message);
+                        startActivity(intent);
                     }
                     return true;
                 case R.id.navigation_dashboard:
