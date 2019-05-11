@@ -1,5 +1,6 @@
 package com.ihc.yacm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,6 +8,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class Home extends AppCompatActivity {
 
@@ -18,8 +20,14 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        // Topbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Welcome!");
+
+
         // List view
-        lstView = (ListView) findViewById(R.id.events_listGroup);
+        lstView = (ListView) findViewById(R.id.events_actions);
 
         // Set the ArrayAdapter as the ListView's adapter.
         //ArrayAdapter<String> adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lstView);
@@ -28,26 +36,21 @@ public class Home extends AppCompatActivity {
         //lstView.setAdapter(adapter);
         //adapter.notifyDataSetChanged();
 
+        // Click on a event name on the list of events
         lstView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-/*
-                for (int j = 0; j < adapterView.getChildCount(); j++)
-                    adapterView.getChildAt(j).setBackgroundColor(Color.TRANSPARENT);
-
-                // change the background color of the selected element
-                view.setBackgroundColor(Color.LTGRAY);*/
-
 
                 if (BuildConfig.DEBUG) {
                     Toast.makeText(getApplicationContext(), "Selected item is " + i, Toast.LENGTH_SHORT).show();
                 }
 
+                // Start Event Details
+                Intent intent = new Intent(getApplicationContext(), EventDetails.class);
+                intent.putExtra("EventIndex", i);
+                intent.putExtra("Title", "Event Details");
 
-                /*Intent intent = new Intent(getApplicationContext(), AnotherActivity.class);
-                intent.putExtra("info", list.get(i));
-                intent.putExtra("selectedTemplateIndex", selectedItemIndex);
-                startActivityForResult(intent, 100);*/
+                startActivity(intent);
             }
         });
     }

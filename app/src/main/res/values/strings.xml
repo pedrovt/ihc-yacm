@@ -14,7 +14,7 @@
     <string name="ic_menu_account">Account</string>
     <string name="ic_menu_logout">Logout</string>
     <string name="title_create">Create Event</string>
-    <string name="home_welcome">Welcome Back!</string>
+    <string name="home_welcome">Select an Event on the list to start</string>
     <string name="title_activity_home">Home</string>
     <string-array name="events_list">
         <item>Midterms DETI Run</item>

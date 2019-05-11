@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="events_details_actions_manager">
+        <item>Participants</item>
+        <item>Results</item>
+        <item>Teams</item>
+    </string-array>
+</resources>
