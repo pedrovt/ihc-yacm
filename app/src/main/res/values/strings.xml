@@ -33,4 +33,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="loginMessage">Let\'s Start!</string>
+    <string name="intro1_start"><![CDATA[Let\'s get started >]]></string>
+    <string name="intro1_title">Managing cycling events \n Made easy</string>
+    <string name="login_copyright">© Paulo, Pedro 2019</string>
 </resources>
