@@ -20,10 +20,16 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        Intent intent = getIntent();
+        String user = "Sarah";
+        if (intent != null) {
+            user = intent.getStringExtra("User");
+        }
+
         // Topbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Welcome!");
+        setTitle("Welcome " + user + "!");
 
 
         // List view
