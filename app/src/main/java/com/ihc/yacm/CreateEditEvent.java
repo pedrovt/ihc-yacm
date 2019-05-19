@@ -28,4 +28,15 @@ public class CreateEditEvent extends AppCompatActivity {
         editor.putString("event" + i + "_tags", eventTags);             //tags
 
     }
+
+    private void editEvent(int eventIndex, String eventName, String eventDate, String eventLocation, String eventTags) {
+        SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        
+        editor.putString("event" + eventIndex + "_name", eventName);             //name
+        editor.putString("event" + eventIndex + "_date", eventDate);             //date
+        editor.putString("event" + eventIndex + "_location", eventLocation);     //date
+        editor.putString("event" + eventIndex + "_tags", eventTags);             //tags
+
+    }
 }
