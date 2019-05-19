@@ -50,8 +50,8 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="334dp"
-        android:layout_height="213dp"
+        android:layout_width="347dp"
+        android:layout_height="301dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="164dp"
         android:layout_marginEnd="8dp"
@@ -68,9 +68,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="50dp"
         android:clickable="true"
-        android:entries="@array/events_list"
         app:layout_constraintBottom_toBottomOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

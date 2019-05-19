@@ -1,14 +1,19 @@
 package com.ihc.yacm;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.Set;
 
 public class Home extends AppCompatActivity {
 
@@ -31,16 +36,16 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitle("Welcome " + user + "!");
 
-
-        // List view
+        // Events list
         lstView = (ListView) findViewById(R.id.events_actions);
 
-        // Set the ArrayAdapter as the ListView's adapter.
-        //ArrayAdapter<String> adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lstView);
-        //list.add("Cheese, apples, water");
+        SharedPreferences prefs = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
+        Set<String> eventNames = prefs.getStringSet("events", null);
+        Toast.makeText(getApplicationContext(), "EVENTS IS " + eventNames, Toast.LENGTH_SHORT);
 
-        //lstView.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
+        String[] eventsNamesArray = eventNames.toArray(new String[eventNames.size()]);
+
+        lstView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, eventsNamesArray));
 
         // Click on a event name on the list of events
         lstView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,5 +64,8 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
 }

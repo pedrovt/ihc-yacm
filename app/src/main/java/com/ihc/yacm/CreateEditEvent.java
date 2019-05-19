@@ -1,5 +1,7 @@
 package com.ihc.yacm;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,5 +12,20 @@ public class CreateEditEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_edit_event);
+    }
+
+
+    private void createEvent(String eventName, String eventDate, String eventLocation, String eventTags) {
+        SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        int i = preferences.getInt("numEvents", -1) + 1;
+        editor.putInt("numEvents", i);
+
+        editor.putString("event" + i + "_name", eventName);             //name
+        editor.putString("event" + i + "_date", eventDate);             //date
+        editor.putString("event" + i + "_location", eventLocation);     //date
+        editor.putString("event" + i + "_tags", eventTags);             //tags
+
     }
 }

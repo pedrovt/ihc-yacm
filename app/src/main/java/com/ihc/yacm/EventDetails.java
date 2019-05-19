@@ -1,8 +1,11 @@
 package com.ihc.yacm;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,7 +31,6 @@ public class EventDetails extends AppCompatActivity
         setTitle("Event Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         /* Navigation drawer */
         /*
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -41,6 +43,19 @@ public class EventDetails extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         */
 
+        TextView eventName = findViewById(R.id.eventName);
+        TextView eventDate = findViewById(R.id.eventDate);
+        TextView eventLocation = findViewById(R.id.eventLocation);
+        TextView eventTags = findViewById(R.id.eventTags);
+
+        // Get Events Details
+        int eventIndex = getIntent().getIntExtra("EventIndex", -1);
+        SharedPreferences prefs = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
+
+        eventName.setText(prefs.getString("event" + eventIndex + "_name", null));             //name
+        eventDate.setText(prefs.getString("event" + eventIndex + "_date", null));             //date
+        eventLocation.setText(prefs.getString("event" + eventIndex + "_location", null));     //date
+        eventTags.setText(prefs.getString("event" + eventIndex + "_tags", null));             //tags
     }
 
     @Override
