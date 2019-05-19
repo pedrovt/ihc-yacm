@@ -24,6 +24,8 @@ class LoggedInUserView {
         return displayName;
     }
 
+    String getEmail() { return emailName+"@"+emailServiceProvider; }
+
     String getValidID() {
         if (displayName!="")
             return displayName;
