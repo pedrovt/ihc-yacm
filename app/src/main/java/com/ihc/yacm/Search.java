@@ -2,7 +2,10 @@ package com.ihc.yacm;
 
 import android.os.Bundle;
 import android.view.View;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.ImageButton;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +20,13 @@ public class Search extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 //commented to ensure build
-                // String keywords = keywordsBox.getEditText().getText().toString();
+                //String keywords = keywordsBox.getEditText().getText().toString();
+                EditText text = (EditText)findViewById(R.id.keywords);
+                String value = text.getText().toString();
+
+                SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+
             }
         });
     }
