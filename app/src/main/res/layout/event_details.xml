@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="EVENT NAME"
-                android:textAlignment="center"
+                android:textAlignment="gravity"
                 android:textSize="24sp" />
 
             <TextView
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="EVENT DATE"
-                android:textAlignment="center"
+                android:textAlignment="gravity"
                 android:textSize="24sp" />
 
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="EVENT LOCATION"
-                android:textAlignment="center"
+                android:textAlignment="gravity"
                 android:textSize="24sp" />
 
             <TextView
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="EVENT TAGS"
-                android:textAlignment="center"
+                android:textAlignment="gravity"
                 android:textSize="24sp" />
 
         </LinearLayout>
