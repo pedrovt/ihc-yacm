@@ -20,7 +20,12 @@ public class CreateEditEvent extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
 
         int i = preferences.getInt("numEvents", -1) + 1;
+
         editor.putInt("numEvents", i);
+
+        // Update events names list
+        String eventsName = preferences.getString("events", null);     //names
+        eventsName.concat("," + eventName);
 
         editor.putString("event" + i + "_name", eventName);             //name
         editor.putString("event" + i + "_date", eventDate);             //date
@@ -33,7 +38,7 @@ public class CreateEditEvent extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         
-        editor.putString("event" + eventIndex + "_name", eventName);             //name
+
         editor.putString("event" + eventIndex + "_date", eventDate);             //date
         editor.putString("event" + eventIndex + "_location", eventLocation);     //date
         editor.putString("event" + eventIndex + "_tags", eventTags);             //tags
