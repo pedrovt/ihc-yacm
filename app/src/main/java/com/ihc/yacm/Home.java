@@ -13,8 +13,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.util.Set;
-
 public class Home extends AppCompatActivity {
 
     // Instance Fields
@@ -40,12 +38,11 @@ public class Home extends AppCompatActivity {
         lstView = (ListView) findViewById(R.id.events_actions);
 
         SharedPreferences prefs = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
-        Set<String> eventNames = prefs.getStringSet("events", null);
-        Toast.makeText(getApplicationContext(), "EVENTS IS " + eventNames, Toast.LENGTH_SHORT);
+        String eventNames = prefs.getString("events", null);
+        String[] eventsNames = eventNames.split(",");
+        Toast.makeText(getApplicationContext(), "EVENTS IS " + eventNames, Toast.LENGTH_LONG);
 
-        String[] eventsNamesArray = eventNames.toArray(new String[eventNames.size()]);
-
-        lstView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, eventsNamesArray));
+        lstView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, eventsNames));
 
         // Click on a event name on the list of events
         lstView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

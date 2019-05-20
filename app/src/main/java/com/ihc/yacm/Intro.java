@@ -11,9 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ihc.yacm.ui.login.LoginActivity;
 
-import java.util.Arrays;
-import java.util.HashSet;
-
 public class Intro extends AppCompatActivity {
 
     @Override
@@ -33,15 +30,19 @@ public class Intro extends AppCompatActivity {
         });
 
         // initialize data
+
         SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
 
+        String eventsNames = "Midterms DETI Run,Gellers Cup,Tour de Aveiro,Tour de France";
         String[] eventsName = {"Midterms DETI Run", "Gellers Cup", "Tour de Aveiro", "Tour de France"};
         String[] eventsDate = {"10-05-2019", "11-05-2019", "12-05-2019", "13-05-2019"};
         String[] eventsLocation = {"Aveiro", "Porto", "Aveiro", "Paris"};
         String[] eventsTags = {"DETI\nSchool", "Family Event\nInformal Event", "City Sponsored\nMajor event", "Nationwide event\nParis event"};
 
-        editor.putStringSet("events", new HashSet<String>(Arrays.asList(eventsName)));     //names
+        editor.putString("events", eventsNames);     //names
 
         for (int i = 0; i < eventsName.length; i++) {
             editor.putString("event" + i + "_name", eventsName[i]);     //name
