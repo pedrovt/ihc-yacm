@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,27 +46,21 @@ public class Home extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        // do something for a debug build
-                        Toast.makeText(Home.this,"Home", Toast.LENGTH_LONG).show();
-
+                        //Toast.makeText(Home.this,"Home", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), Home.class);
                         intent.putExtra("Title", "Event Details");
-                        Log.d("TEST", "in home");
+                        startActivity(intent);
                         return true;
                     case R.id.navigation_dashboard:
-                        Toast.makeText(Home.this,"Dashboard", Toast.LENGTH_LONG).show();
-
-                        intent = new Intent(getApplicationContext(), Home.class);
-                        intent.putExtra("Title", "Event Details");
-
-
+                        //Toast.makeText(Home.this,"Create Event", Toast.LENGTH_LONG).show();
+                        intent = new Intent(getApplicationContext(), CreateEditEvent.class);
+                        startActivity(intent);
                         return true;
                     case R.id.navigation_notifications:
-                        Toast.makeText(Home.this,"Notifications", Toast.LENGTH_LONG).show();
-
-                        intent = new Intent(getApplicationContext(), Home.class);
+                        //Toast.makeText(Home.this,"Notifications", Toast.LENGTH_LONG).show();
+                        intent = new Intent(getApplicationContext(), Notifications.class);
                         intent.putExtra("Title", "Event Details");
-
+                        startActivity(intent);
                         return true;
                 }
                 return false;
