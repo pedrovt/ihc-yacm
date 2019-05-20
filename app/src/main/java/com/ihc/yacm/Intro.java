@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ihc.yacm.ui.login.LoginActivity;
 
+import java.util.ArrayList;
+
 public class Intro extends AppCompatActivity {
 
     @Override
@@ -31,7 +33,7 @@ public class Intro extends AppCompatActivity {
 
         // initialize data
 
-        SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
+        /*SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.apply();
@@ -52,34 +54,16 @@ public class Intro extends AppCompatActivity {
         }
         editor.apply();
 
-        editor.putInt("numEvents", eventsName.length);
+        editor.putInt("numEvents", eventsName.length);*/
+
+        ArrayList<Event> eventList = new ArrayList<>();
+        eventList.add(new Event("Midterms DETI Run","10-05-2019","Aveiro","DETI\nSchool"));
+        eventList.add(new Event("Gellers Cup","11-06-2019","Porto","Family Event\nInformal Event"));
+        eventList.add(new Event("Tour de Aveiro","12-07-2019","Aveiro","City Sponsored\nMajor event"));
+        eventList.add(new Event("Tour de France","13-08-2019","Paris","Nationwide event\nParis event"));
+        Assistant assistant = Assistant.getInstance(eventList);
+
     }
 
 
-}
-
-
-class Event {
-
-    private String name;
-    private String date;
-    private String location;
-    private String tags;
-
-    public Event (String name, String date, String location, String tagList) {
-        this.name = name;
-        this.date = date;
-        this.location = location;
-        this.tags = tagList;
-    }
-
-    public String getName()     { return this.name; }
-    public String getDate()     { return this.date; }
-    public String getLocation() { return this.location; }
-    public String getTags()     { return this.tags; }
-
-    public void setName(String name)            { this.name = name; }
-    public void setDate(String date)            { this.date = date; }
-    public void setLocation(String location)    { this.location = location; }
-    public void setTags(String tags)            { this.tags = tags; }
 }
