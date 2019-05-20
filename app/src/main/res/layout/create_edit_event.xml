@@ -83,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="date" />
+                android:inputType="date"
+                android:text="Date" />
 
             <EditText
                 android:id="@+id/editText_eventLocation"
@@ -97,10 +98,11 @@
                 android:id="@+id/editText_eventTags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                android:text="Tag 1\nTag 2" />
+                android:text="Tags" />
 
         </LinearLayout>
     </LinearLayout>
@@ -111,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="70dp"
-        android:text="Button"
+        android:text="Create Event"
         app:layout_constraintBottom_toBottomOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

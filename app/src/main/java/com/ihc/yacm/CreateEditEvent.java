@@ -3,15 +3,45 @@ package com.ihc.yacm;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.appbar.AppBarLayout;
+
 public class CreateEditEvent extends AppCompatActivity {
+
+    // boolean create
+    // true = create
+    // false = edit
+    private boolean create = true;
+    private Button bottomButton;
+    private AppBarLayout topBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.create = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_edit_event);
+        bottomButton = (Button)findViewById(R.id.button3);
+        topBar = (AppBarLayout) findViewById(R.id.appBarLayout);
+        bottomButton.setText("Create");
+        setTitle("Create Event");
+    }
+
+    protected void onCreate(Bundle savedInstanceState, boolean create) {
+        this.create = create;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.create_edit_event);
+        bottomButton = (Button)findViewById(R.id.button3);
+        topBar = (AppBarLayout) findViewById(R.id.appBarLayout);
+        if (this.create) {
+            bottomButton.setText("Create");
+            setTitle("Create Event");
+        } else {
+            bottomButton.setText("Save");
+            setTitle("Edit Event");
+        }
     }
 
 
