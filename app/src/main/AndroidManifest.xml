@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ManageParticipants"></activity>
+        <activity android:name=".Notifications"></activity>
+        <activity android:name=".ManageParticipants" />
         <activity android:name=".Search" />
         <activity android:name=".CreateEditEvent">
             <intent-filter>
