@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,17 @@ public class CreateEditEvent extends AppCompatActivity {
         bottomButton = (Button)findViewById(R.id.button3);
         topBar = (AppBarLayout) findViewById(R.id.appBarLayout);
         bottomButton.setText("Create");
+        bottomButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String eventName = ((EditText)findViewById(R.id.editText_eventName)).getText().toString();
+                String eventDate = ((EditText)findViewById(R.id.editText_eventDate)).getText().toString();
+                String eventLocation = ((EditText)findViewById(R.id.editText_eventLocation)).getText().toString();
+                String eventTags = ((EditText)findViewById(R.id.editText_eventTags)).getText().toString();
+
+                createEvent(eventName, eventDate, eventLocation, eventTags);
+                finish();
+            }
+        });
         setTitle("Create Event");
     }
 
@@ -42,6 +55,17 @@ public class CreateEditEvent extends AppCompatActivity {
         topBar = (AppBarLayout) findViewById(R.id.appBarLayout);
         if (this.create) {
             bottomButton.setText("Create");
+            bottomButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    String eventName = ((EditText)findViewById(R.id.editText_eventName)).getText().toString();
+                    String eventDate = ((EditText)findViewById(R.id.editText_eventDate)).getText().toString();
+                    String eventLocation = ((EditText)findViewById(R.id.editText_eventLocation)).getText().toString();
+                    String eventTags = ((EditText)findViewById(R.id.editText_eventTags)).getText().toString();
+
+                    createEvent(eventName, eventDate, eventLocation, eventTags);
+                    finish();
+                }
+            });
             setTitle("Create Event");
         } else {
             bottomButton.setText("Save");

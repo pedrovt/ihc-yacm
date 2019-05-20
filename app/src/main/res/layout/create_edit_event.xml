@@ -83,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="date" />
+                android:inputType="text"
+                android:text="Date" />
 
             <EditText
                 android:id="@+id/editText_eventLocation"
@@ -91,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                tools:text="Location" />
+                android:text="Location" />
 
             <EditText
                 android:id="@+id/editText_eventTags"
@@ -100,7 +101,7 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                android:text="Tag 1\nTag 2" />
+                android:text="Tags" />
 
         </LinearLayout>
     </LinearLayout>
