@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,10 @@ public class EventDetails extends AppCompatActivity
         setSupportActionBar(toolbar);
         setTitle("Event Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { finish(); }
+        });
 
         // Downbar
         BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.navigation);
