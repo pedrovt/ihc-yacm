@@ -2,14 +2,15 @@ package com.ihc.yacm;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Assistant {
 
     // /------------\
     // | ATTRIBUTES |
     // \------------/
-    private static Assistant auxiliarInstance = new Assistant();
-    private ArrayList<Event> eventList = new ArrayList<>();
+    private static Assistant instance = new Assistant();
+    private List<Event> eventList = new ArrayList<>();
 
 
     // /--------------\
@@ -22,23 +23,23 @@ public class Assistant {
     // | FUNCTIONS |
     // \-----------/
     public static Assistant getInstance () {
-        return auxiliarInstance;
+        return instance;
     }
 
-    public static Assistant getInstance (ArrayList<Event> eventList) {
-        auxiliarInstance.eventList = eventList;
-        return auxiliarInstance;
+    public static Assistant getInstance (List<Event> eventList) {
+        instance.eventList = eventList;
+        return instance;
     }
 
     public Assistant getInstance (Event[] eventList) {
-        Collections.addAll(auxiliarInstance.eventList,eventList);
-        return auxiliarInstance;
+        Collections.addAll(instance.eventList,eventList);
+        return instance;
     }
 
-    public ArrayList<Event> getEventList() { return eventList; }
+    public List<Event> getEventList() { return eventList; }
 
-    public ArrayList<String> getEventNames() {
-        ArrayList<String> nameList = new ArrayList<>();
+    public List<String> getEventNames() {
+        List<String> nameList = new ArrayList<>();
         for (Event event : eventList) {
             nameList.add(event.getName());
         }

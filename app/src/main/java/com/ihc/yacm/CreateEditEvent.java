@@ -17,16 +17,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CreateEditEvent extends AppCompatActivity {
 
-    // boolean create
-    // true = create
-    // false = edit
-    private boolean create = true;
+    // boolean index
+    // == -1 --> create
+    // != -1 --> edit
+    private int index = -1;
     private Button bottomButton;
     private AppBarLayout topBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.create = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_edit_event);
         bottomButton = (Button)findViewById(R.id.button3);
@@ -74,14 +73,14 @@ public class CreateEditEvent extends AppCompatActivity {
         });
     }
 
-    protected void onCreate(Bundle savedInstanceState, boolean create) {
-        this.create = create;
+    protected void onCreate(Bundle savedInstanceState, int i) {
+        this.index = i;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_edit_event);
         
         bottomButton = (Button)findViewById(R.id.button3);
         topBar = (AppBarLayout) findViewById(R.id.appBarLayout);
-        if (this.create) {
+        if (this.index == -1) {
             bottomButton.setText("Create");
             bottomButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
@@ -97,6 +96,17 @@ public class CreateEditEvent extends AppCompatActivity {
             setTitle("Create Event");
         } else {
             bottomButton.setText("Save");
+            bottomButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    String eventName = ((EditText)findViewById(R.id.editText_eventName)).getText().toString();
+                    String eventDate = ((EditText)findViewById(R.id.editText_eventDate)).getText().toString();
+                    String eventLocation = ((EditText)findViewById(R.id.editText_eventLocation)).getText().toString();
+                    String eventTags = ((EditText)findViewById(R.id.editText_eventTags)).getText().toString();
+
+                    editEvent(index, eventName, eventDate, eventLocation, eventTags);
+                    finish();
+                }
+            });
             setTitle("Edit Event");
         }
 
@@ -130,7 +140,7 @@ public class CreateEditEvent extends AppCompatActivity {
 
 
     private void createEvent(String eventName, String eventDate, String eventLocation, String eventTags) {
-        SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
+        /*SharedPreferences preferences = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
         int i = preferences.getInt("numEvents", -1) + 1;
@@ -147,7 +157,9 @@ public class CreateEditEvent extends AppCompatActivity {
         editor.putString("event" + i + "_location", eventLocation);     //date
         editor.putString("event" + i + "_tags", eventTags);             //tags
 
-        editor.apply();
+        editor.apply();*/
+        Assistant assistant = Assistant.getInstance();
+
 
     }
 

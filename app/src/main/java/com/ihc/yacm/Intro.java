@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ihc.yacm.ui.login.LoginActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Intro extends AppCompatActivity {
 
@@ -56,11 +58,17 @@ public class Intro extends AppCompatActivity {
 
         editor.putInt("numEvents", eventsName.length);*/
 
-        ArrayList<Event> eventList = new ArrayList<>();
-        eventList.add(new Event("Midterms DETI Run","10-05-2019","Aveiro","DETI\nSchool"));
-        eventList.add(new Event("Gellers Cup","11-06-2019","Porto","Family Event\nInformal Event"));
-        eventList.add(new Event("Tour de Aveiro","12-07-2019","Aveiro","City Sponsored\nMajor event"));
-        eventList.add(new Event("Tour de France","13-08-2019","Paris","Nationwide event\nParis event"));
+        List<Participant> participantList = Arrays.asList(new Participant[]{
+                new Participant("Toy",'M',56),
+                new Participant("Quim Barreiros",'M',71),
+                new Participant("Maria Leal",'F',50)
+        });
+
+        List<Event> eventList = new ArrayList<>();
+        eventList.add(new Event("Midterms DETI Run", "10-05-2019", "Aveiro", "DETI\nSchool", participantList));
+        eventList.add(new Event("Gellers Cup","11-06-2019","Porto","Family Event\nInformal Event", participantList));
+        eventList.add(new Event("Tour de Aveiro","12-07-2019","Aveiro","City Sponsored\nMajor event", participantList));
+        eventList.add(new Event("Tour de France","13-08-2019","Paris","Nationwide event\nParis event", participantList));
         Assistant assistant = Assistant.getInstance(eventList);
 
     }

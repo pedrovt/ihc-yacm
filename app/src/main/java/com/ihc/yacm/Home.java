@@ -13,9 +13,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class Home extends AppCompatActivity {
 
@@ -86,7 +89,8 @@ public class Home extends AppCompatActivity {
 
                 // Start Event Details
                 Intent intent = new Intent(getApplicationContext(), EventDetails.class);
-                intent.putExtra("EventIndex", i);
+                intent.putExtra("EventName", (String)((AppCompatTextView)view).getText());
+                //intent.putExtra("EventIndex", i);
                 intent.putExtra("Title", "Event Details");
 
                 startActivity(intent);
