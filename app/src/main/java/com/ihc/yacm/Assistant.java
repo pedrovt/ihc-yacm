@@ -10,7 +10,7 @@ public class Assistant {
     // | ATTRIBUTES |
     // \------------/
     private static Assistant instance = new Assistant();
-    private List<Event> eventList = new ArrayList<>();
+    private static List<Event> eventList = new ArrayList<>();
 
 
     // /--------------\
@@ -31,14 +31,14 @@ public class Assistant {
         return instance;
     }
 
-    public Assistant getInstance (Event[] eventList) {
+    public static Assistant getInstance (Event[] eventList) {
         Collections.addAll(instance.eventList,eventList);
         return instance;
     }
 
-    public List<Event> getEventList() { return eventList; }
+    public static List<Event> getEventList() { return eventList; }
 
-    public List<String> getEventNames() {
+    public static List<String> getEventNames() {
         List<String> nameList = new ArrayList<>();
         for (Event event : eventList) {
             nameList.add(event.getName());
@@ -46,7 +46,7 @@ public class Assistant {
         return nameList;
     }
 
-    public void removeEvent (Event event) {
+    public static void removeEvent (Event event) {
         for (Event e : eventList) {
             if (e.equals(event)) {
                 eventList.remove(e);
@@ -55,5 +55,5 @@ public class Assistant {
         }
     }
 
-    public void addEvent (Event event) { eventList.add(event); }
+    public static void addEvent (Event event) { eventList.add(event); }
 }

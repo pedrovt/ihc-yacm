@@ -1,5 +1,7 @@
 package com.ihc.yacm;
 
+import android.provider.Telephony;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,15 @@ public class Event {
     public void setLocation(String location)            { this.location = location; }
     public void setTags(String tags)                    { this.tags = tags; }
     public void setTags(List<Participant> participants) { this.participantList = participants; }
+
+    public void addParticipant(Participant participant) { participantList.add(participant); }
+    public void removeParticipant(String participantName) {
+        for(Participant participant : this.participantList){
+            if(participant.getName().equals(participantName))
+                this.participantList.remove(participant);
+                break;
+        }
+    }
 
     public boolean equals(Event event) {
         return (this.name.equals(event.getName())&&

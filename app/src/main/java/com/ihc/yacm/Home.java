@@ -18,17 +18,23 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class Home extends AppCompatActivity {
 
     // Instance Fields
     private ListView lstView;
+    private List<Event> eventList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        Assistant assistant = Assistant.getInstance();
 
         // Get Shared Preferences and Intent
         SharedPreferences prefs = getSharedPreferences(Utils.PREFERENCES, Context.MODE_PRIVATE);
@@ -73,9 +79,11 @@ public class Home extends AppCompatActivity {
         // Events list
         lstView = (ListView) findViewById(R.id.events_actions);
 
-        String eventNames = prefs.getString("events", null);
-        String[] eventsNames = eventNames.split(",");
-        Toast.makeText(getApplicationContext(), "EVENTS IS " + eventNames, Toast.LENGTH_LONG);
+        eventList = assistant.getEventList();
+        List<String> eventsNames = new ArrayList<>();
+        for(Event e : eventList) {
+            eventsNames.add(e.getName());
+        }
 
         lstView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, eventsNames));
 
@@ -90,7 +98,7 @@ public class Home extends AppCompatActivity {
                 // Start Event Details
                 Intent intent = new Intent(getApplicationContext(), EventDetails.class);
                 intent.putExtra("EventName", (String)((AppCompatTextView)view).getText());
-                //intent.putExtra("EventIndex", i);
+                intent.putExtra("EventIndex", i);
                 intent.putExtra("Title", "Event Details");
 
                 startActivity(intent);
