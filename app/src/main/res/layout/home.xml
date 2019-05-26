@@ -88,6 +88,7 @@
                 android:layout_height="201dp"
 
                 android:clickable="true"
+                android:entries="@array/events_names"
                 android:scrollbars="horizontal|vertical" />
         </LinearLayout>
     </ScrollView>

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="events_details_actions_manager">
+        <item>Edit Events</item>
         <item>Participants</item>
         <item>Results</item>
         <item>Teams</item>
+    </string-array>
+    <string-array name="events_names">
+        <item>Midterms DETI Run</item>
+        <item>Gellers Cup</item>
+        <item>Tour de Aveiro</item>
+        <item>Tour de France</item>
     </string-array>
 </resources>

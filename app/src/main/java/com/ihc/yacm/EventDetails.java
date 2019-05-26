@@ -1,14 +1,11 @@
 package com.ihc.yacm;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -101,11 +98,42 @@ public class EventDetails extends AppCompatActivity implements NavigationView.On
                     Toast.makeText(getApplicationContext(), "Selected item is " + i, Toast.LENGTH_SHORT).show();
                 }
 
-                // Start Event Details
-                Intent intent = new Intent(getApplicationContext(), ManageParticipants.class);
-                intent.putExtra("EventName", eventName);
-                intent.putExtra("Title", "Event Details");
-                startActivity(intent);
+                Intent intent;
+                switch (i) {
+                    case 0:         // Edit Event
+                        intent = new Intent(getApplicationContext(), CreateEditEvent.class);
+                        intent.putExtra("EventName", event.getName());
+                        intent.putExtra("EventDate", event.getDate());
+                        intent.putExtra("EventLocation", event.getLocation());
+                        intent.putExtra("EventTags", event.getTags());
+                        intent.putExtra("EventIndex",eventIndex);
+                        intent.putExtra("Title", "Event Details");
+                        startActivity(intent);
+                        break;
+
+                    case 1:         // Manage participants
+                        intent = new Intent(getApplicationContext(), ManageParticipants.class);
+                        intent.putExtra("EventName", eventName);
+                        intent.putExtra("Title", "Event Details");
+                        startActivity(intent);
+                        break;
+
+                    case 2:         // Results
+                        intent = new Intent(getApplicationContext(), ManageResults.class);
+                        intent.putExtra("EventName", eventName);
+                        intent.putExtra("Title", "Event Details");
+                        startActivity(intent);
+                        break;
+
+                    case 3:         // Teams
+                        intent = new Intent(getApplicationContext(), ManageTeams.class);
+                        intent.putExtra("EventName", eventName);
+                        intent.putExtra("Title", "Event Details");
+                        startActivity(intent);
+                        break;
+                }
+
+
             }
         });
 
