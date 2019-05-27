@@ -3,11 +3,13 @@ package com.ihc.yacm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,6 +29,15 @@ public class ManageTeams extends AppCompatActivity {
         setContentView(R.layout.manage_teams);
 
         assistant = Assistant.getInstance();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Teams");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { finish(); }
+        });
 
         eventName = getIntent().getStringExtra("EventName");
         lstView = (ListView) findViewById(R.id.participants_list);

@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,7 +29,14 @@ public class CreateEditEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_edit_event);
 
-        
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { finish(); }
+        });
+
         this.eventIndex = getIntent().getIntExtra("EventIndex",-1);
 
         this.event =  new Event(getIntent().getStringExtra("EventName"),
