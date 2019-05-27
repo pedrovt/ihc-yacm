@@ -50,6 +50,21 @@ public class ManageParticipants extends AppCompatActivity {
 
         lstView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, participantNames));
 
+        // Listener
+        lstView = (ListView) findViewById(R.id.participants_list);
+
+        // Click on a event name on the list of events
+        lstView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (BuildConfig.DEBUG) {
+                    Toast.makeText(getApplicationContext(), "Selected item is " + i, Toast.LENGTH_SHORT).show();
+                }
+
+                Intent intent = new Intent(getApplicationContext(), Profile.class);
+                startActivity(intent);
+            }});
+
         // Downbar
         BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
